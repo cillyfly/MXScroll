@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MXScroll_Example' do
+  pod 'MXScroll', :path => '../'
+
+  target 'MXScroll_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
