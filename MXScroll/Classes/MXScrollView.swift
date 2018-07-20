@@ -53,7 +53,7 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        sizeToFit()
+        sizeToFit() 
         translatesAutoresizingMaskIntoConstraints = false
         showsHorizontalScrollIndicator = mxShowsHorizontalScrollIndicator
         showsVerticalScrollIndicator = mxShowsVerticalScrollIndicator
@@ -121,6 +121,18 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
                     }
                 }.disposed(by: dispose)
             
+        } else if let uweb = view as? UIWebView {
+            let realHeightOB = uweb.rx.realContentHeight.share()
+            realHeightOB.bind(to: uweb.rx.MatchHeightEqualToContent).disposed(by: dispose)
+            realHeightOB.observeOn(MainScheduler.asyncInstance)
+                .subscribe { eve in
+                    if !eve.isStopEvent {
+                        self.updateHeaderHeight()
+                        if self.shouldScrollToBottomAtFirstTime {
+                            self.scrollToBottom(animated: false)
+                        }
+                    }
+                }.disposed(by: dispose)
         } else if let scroll = view as? UIScrollView {
             scroll.rx.realContentHeight.bind(to: scroll.rx.MatchHeightEqualToContent).disposed(by: dispose)
             scroll.rx.realContentHeight.skipWhile { $0 == 0.0 }.delay(0.01, scheduler: MainScheduler.asyncInstance)
