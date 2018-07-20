@@ -15,6 +15,9 @@ MXScroll is a framework that lets you create mix scroll view easier. you can jus
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+| WKWebView | UIScrollView | UIView |
+| --- | --- | --- |
+| ![wkwebview](images/wkwebview.gif) | ![UIScrollView](images/UIScrollView.gif) | ![UIView](images/UIView.gif) |
 
 ## Requirements
 * Xcode 9+
@@ -45,7 +48,7 @@ pod 'MXScroll'
 let header = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController")
 ``` 
 
-if `WKWebView` or `UIScrollView` is in HeaderVC, you should conforms to `MXViewControllerViewSource`.
+if `WKWebView` or `UIScrollView` is in HeaderVC, you should implement `MXViewControllerViewSource`.
 
 ```Swift
 extension HeaderViewController:MXViewControllerViewSource{
@@ -60,7 +63,7 @@ extension HeaderViewController:MXViewControllerViewSource{
 ```Swift
 let child1 = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChildViewController")
 ```
-if `UITableView` or `UIScrollView` is in ContentVC, you should conforms to the `MXViewControllerViewSource`
+if `UITableView` or `UIScrollView` is in ContentVC, you should implement `MXViewControllerViewSource`
 
 ```Swift
 extension ChildViewController:MXViewControllerViewSource{
@@ -91,7 +94,7 @@ let mx = MXViewController<MSSegmentControl>.init(headerViewController: header, s
 navigationController?.pushViewController(mx, animated: true)
 ```
 ### Segment
-If you want to use the custom Segment,Just conforms to the `MXSegmentProtocol` 
+If you want to use the custom Segment,Just implement`MXSegmentProtocol` 
 
 ```Swift
 extension MSSegmentControl: MXSegmentProtocol {
