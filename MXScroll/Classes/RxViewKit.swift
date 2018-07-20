@@ -14,7 +14,7 @@ import RxSwift
 #endif
 
 extension Reactive where Base == UIView {
-    public var MatchHeightEqualToContent:Binder<CGFloat>{
+     var MatchHeightEqualToContent:Binder<CGFloat>{
         return Binder(self.base){(scroll,value) in
             scroll.easy.layout(
                 Height(value)
@@ -23,7 +23,7 @@ extension Reactive where Base == UIView {
     }
     
     // export to public the real content height.
-    public var realContentHeight: Observable<CGFloat> {
+     var realContentHeight: Observable<CGFloat> {
         return self.observeWeakly(CGRect.self, "frame").map{$0?.height ?? 0} 
     }
     

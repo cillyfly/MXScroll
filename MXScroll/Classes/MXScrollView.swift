@@ -34,12 +34,29 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
     
     var contentViews = [UIView]()
     
+    var shouldScrollToBottomAtFirstTime: Bool = false
+    
+    var mxShowsVerticalScrollIndicator: Bool = false {
+        didSet {
+            showsVerticalScrollIndicator = mxShowsVerticalScrollIndicator
+            contentView?.showsVerticalScrollIndicator = mxShowsVerticalScrollIndicator
+        }
+    }
+    
+    var mxShowsHorizontalScrollIndicator: Bool = false {
+        didSet {
+            showsHorizontalScrollIndicator = mxShowsHorizontalScrollIndicator
+            contentView?.showsHorizontalScrollIndicator = mxShowsHorizontalScrollIndicator
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         sizeToFit()
         translatesAutoresizingMaskIntoConstraints = false
-        
+        showsHorizontalScrollIndicator = mxShowsHorizontalScrollIndicator
+        showsVerticalScrollIndicator = mxShowsVerticalScrollIndicator
         decelerationRate = UIScrollViewDecelerationRateFast
     }
     
@@ -92,35 +109,45 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
     
     private func bindViewHieghtWithRealHeight(view: UIView) {
         if let web = view as? WKWebView {
-            web.rx.realContentHeight.bind(to: web.rx.MatchHeightEqualToContent).disposed(by: dispose)
-            web.rx.realContentHeight.subscribe { [unowned self] eve in
-                if !eve.isStopEvent {
-                      self.updateHeaderHeight()
-                }
-            }.disposed(by: dispose)
+            let realHeightOB = web.rx.realContentHeight.share()
+            realHeightOB.bind(to: web.rx.MatchHeightEqualToContent).disposed(by: dispose)
+            realHeightOB
+                .subscribe { eve in
+                    if !eve.isStopEvent {
+                        self.updateHeaderHeight()
+                        if self.shouldScrollToBottomAtFirstTime {
+                            self.scrollToBottom(animated: false)
+                        }
+                    }
+                }.disposed(by: dispose)
             
         } else if let scroll = view as? UIScrollView {
             scroll.rx.realContentHeight.bind(to: scroll.rx.MatchHeightEqualToContent).disposed(by: dispose)
-            scroll.rx.realContentHeight.delay(0.01, scheduler: MainScheduler.asyncInstance).subscribe {[unowned self] eve in
-                if !eve.isStopEvent {
-                      self.updateHeaderHeight()
-                }
-            }.disposed(by: dispose)
+            scroll.rx.realContentHeight.skipWhile { $0 == 0.0 }.delay(0.01, scheduler: MainScheduler.asyncInstance)
+                .subscribe { [unowned self] eve in
+                    if !eve.isStopEvent {
+                        self.updateHeaderHeight()
+                        if self.shouldScrollToBottomAtFirstTime {
+                            self.scrollToBottom(animated: false)
+                            self.shouldScrollToBottomAtFirstTime = false
+                        }
+                    }
+                }.disposed(by: dispose)
             
         } else {
             view.rx.realContentHeight.bind(to: view.rx.MatchHeightEqualToContent).disposed(by: dispose)
             view.rx.realContentHeight.subscribe { [unowned self] eve in
                 if !eve.isStopEvent {
-                  self.updateHeaderHeight()
+                    self.updateHeaderHeight()
                 }
             }.disposed(by: dispose)
         }
     }
     
-    func updateHeaderHeight(){
-        self.headerView?.layoutIfNeeded()
-        self.headerViewHeight = self.headerView?.frame.height ?? 0
-        self.containerView.easy.layout(Height(self.getContentHeight()))
+    func updateHeaderHeight() {
+        headerView?.layoutIfNeeded()
+        headerViewHeight = headerView?.frame.height ?? 0
+        containerView.easy.layout(Height(getContentHeight()))
     }
     
     // add segment
@@ -248,5 +275,16 @@ extension MXScrollView {
         var contentHeight = (superview?.bounds.height)! + headerViewHeight
         contentHeight -= (topSpacing + bottomSpacing)
         return contentHeight
+    }
+}
+
+extension MXScrollView {
+    func scrollToBottom(animated: Bool) {
+        layoutIfNeeded()
+        let y = contentSize.height - bounds.size.height
+        if contentOffset.y != y {
+            let bottomOffset = CGPoint(x: 0, y: y)
+            setContentOffset(bottomOffset, animated: animated)
+        }
     }
 }

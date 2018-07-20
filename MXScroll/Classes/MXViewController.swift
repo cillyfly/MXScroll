@@ -20,7 +20,9 @@ import UIKit
     /// - Returns: observe view
     @objc optional func viewForMixToObserveContentOffsetChange() -> UIView
     
-    @objc optional func headerViewForContentOb() -> UIView?
+    /// By default MXScrollView will not observe the default view of HeaderViewController for content changes.
+    /// if you want to change the headerview's content height implement MXViewControllerViewSource and pass your autochange heigth view.
+    @objc optional func headerViewForMixObserveContentOffsetChange() -> UIView?
 }
 
 public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: UIView {
@@ -57,6 +59,51 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
     open var headerViewOffsetHeight: CGFloat = 0.0 {
         didSet {
             segmentedScrollView.headerViewOffsetHeight = headerViewOffsetHeight
+        }
+    }
+    
+    /**
+     *  Set height for segment view.
+     *
+     *  By default the height is 40.0
+     *
+     *  segmentedViewController.segmentViewHeight = 60.0
+     */
+    open var segmentViewHeight: CGFloat = 40.0 {
+        didSet {
+            segmentedScrollView.segmentViewHeight = segmentViewHeight
+        }
+    }
+    
+    /**
+     *  Set vertical scroll indicator.
+     *
+     *  By default true.
+     *
+     *  segmentedScrollView.showsVerticalScrollIndicator = false
+     */
+    open var showsVerticalScrollIndicator = true {
+        didSet {
+            segmentedScrollView.mxShowsVerticalScrollIndicator = showsVerticalScrollIndicator
+        }
+    }
+    
+    /**
+     *  Set horizontal scroll indicator.
+     *
+     *  By default true.
+     *
+     *  segmentedScrollView.showsHorizontalScrollIndicator = false
+     */
+    open var showsHorizontalScrollIndicator = true {
+        didSet {
+            segmentedScrollView.mxShowsHorizontalScrollIndicator = showsHorizontalScrollIndicator
+        }
+    }
+    
+    open var shouldScrollToBottomAtFirstTime: Bool = true {
+        didSet {
+            segmentedScrollView.shouldScrollToBottomAtFirstTime = shouldScrollToBottomAtFirstTime
         }
     }
     
@@ -97,6 +144,13 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
      * Set the default values for the segmented scroll view.
      */
     func setDefaultValuesToSegmentedScrollView() {
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if shouldScrollToBottomAtFirstTime {
+            scrollToBottom()
+        }
     }
     
     public override func loadView() {
@@ -143,9 +197,10 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
     func addHeaderViewController(_ headerViewController: UIViewController) {
         addChildViewController(headerViewController)
         segmentedScrollView.addHeaderView(view: headerViewController.view)
-        if let delegate = headerViewController as? MXViewControllerViewSource ,let v = delegate.headerViewForContentOb?() {
+        if let delegate = headerViewController as? MXViewControllerViewSource, let v = delegate.headerViewForMixObserveContentOffsetChange?() {
             segmentedScrollView.setListenHeaderView(view: v)
-        }else{
+            
+        } else {
             headerViewController.view.layoutIfNeeded()
             segmentedScrollView.headerViewHeight = headerViewController.view.frame.height
             segmentedScrollView.updateHeaderHeight()
@@ -161,8 +216,8 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
      */
     func addContentControllers(_ contentControllers: [UIViewController]) {
         for controller in contentControllers {
-            addChildViewController(controller) 
-            segmentedScrollView.addContentView(controller.view, frame: view.bounds) 
+            addChildViewController(controller)
+            segmentedScrollView.addContentView(controller.view, frame: view.bounds)
             controller.didMove(toParentViewController: self)
             if let delegate = controller as? MXViewControllerViewSource {
                 let v = delegate.viewForMixToObserveContentOffsetChange!()
@@ -185,5 +240,11 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
         
         addHeaderViewController(headerViewController!)
         addContentControllers(segmentControllers)
+    }
+}
+
+extension MXViewController {
+    public func scrollToBottom() {
+        segmentedScrollView.scrollToBottom(animated: false)
     }
 }
