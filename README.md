@@ -48,7 +48,7 @@ pod 'MXScroll'
 let header = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController")
 ``` 
 
-if `WKWebView` or `UIScrollView` is in HeaderVC, you should implement `MXViewControllerViewSource`.
+if `WKWebView` , `UIWebView` or `UIScrollView` is in HeaderVC, you should implement `MXViewControllerViewSource`.
 
 ```Swift
 extension HeaderViewController:MXViewControllerViewSource{
