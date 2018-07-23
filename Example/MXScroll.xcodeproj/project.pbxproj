@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E238C2C21018E7A0080DE0E /* MXExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E238C2B21018E7A0080DE0E /* MXExampleViewController.swift */; };
 		1EBE3B5120FF37BC005381B5 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE3B4E20FF37BC005381B5 /* SecondViewController.swift */; };
 		1EBE3B5220FF37BC005381B5 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE3B4F20FF37BC005381B5 /* ChildViewController.swift */; };
 		1EBE3B5320FF37BC005381B5 /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE3B5020FF37BC005381B5 /* HeaderViewController.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		07F2980029E647EE62A3B7F6 /* Pods-MXScroll_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MXScroll_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MXScroll_Example/Pods-MXScroll_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1E238C2B21018E7A0080DE0E /* MXExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MXExampleViewController.swift; sourceTree = "<group>"; };
 		1EBE3B4E20FF37BC005381B5 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1EBE3B4F20FF37BC005381B5 /* ChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		1EBE3B5020FF37BC005381B5 /* HeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				1EBE3B5020FF37BC005381B5 /* HeaderViewController.swift */,
 				1EBE3B4F20FF37BC005381B5 /* ChildViewController.swift */,
 				1EBE3B4E20FF37BC005381B5 /* SecondViewController.swift */,
+				1E238C2B21018E7A0080DE0E /* MXExampleViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -342,6 +345,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				1EBE3B5320FF37BC005381B5 /* HeaderViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				1E238C2C21018E7A0080DE0E /* MXExampleViewController.swift in Sources */,
 				1EBE3B5220FF37BC005381B5 /* ChildViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

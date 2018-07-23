@@ -8,6 +8,10 @@
 
 import MXScroll
 import UIKit
+import RxCocoa
+import RxSwift
+
+
 let Segment_statu_titleNormal = UIFont(name: "PingFangSC-Regular", size: 16)!
 let Segment_statu_titleSelected = UIFont(name: "PingFangSC-Medium", size: 16)!
 class ViewController: UIViewController {
@@ -33,6 +37,8 @@ class ViewController: UIViewController {
         
         let headerNormal = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController3")
         
+         let headerUIWebView = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController4")
+        
         var hh:UIViewController!
         if tag == 0{
             hh = header
@@ -40,6 +46,8 @@ class ViewController: UIViewController {
             hh = headerScroll
         }else if tag == 2{
             hh = headerNormal
+        }else if tag == 3{
+            hh = headerUIWebView
         }
         
         let child1 = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChildViewController")
@@ -52,7 +60,10 @@ class ViewController: UIViewController {
         let mx = MXViewController<MSSegmentControl>.init(headerViewController: hh, segmentControllers: [child1, child2], segmentView: segment)
         mx.headerViewOffsetHeight = 10
         mx.view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        mx.title = "MIX"
+        mx.shouldScrollToBottomAtFirstTime = true
         navigationController?.pushViewController(mx, animated: true)
+   
     }
     
     func setupSegment(segmentView: MSSegmentControl) {
@@ -69,4 +80,28 @@ class ViewController: UIViewController {
         segmentView.indicatorWidthPercent = 1
         segmentView.selectionStyle = .textWidth
     }
+}
+
+extension UIViewController{
+    private func trigger(selector: Selector) -> Observable<Void> {
+        return rx.sentMessage(selector).map { _ in () }.share(replay: 1)
+    }
+    
+    var viewWillAppearTrigger: Observable<Void> {
+        return self.trigger(selector: #selector(self.viewWillAppear(_:)))
+    }
+    
+    var viewDidAppearTrigger: Observable<Void> {
+        return self.trigger(selector: #selector(self.viewDidAppear(_:)))
+    }
+    
+    var viewWillDisappearTrigger: Observable<Void> {
+        return self.trigger(selector: #selector(self.viewWillDisappear(_:)))
+    }
+    
+    var viewDidDisappearTrigger: Observable<Void> {
+        return self.trigger(selector: #selector(self.viewDidDisappear(_:)))
+    }
+    
+ 
 }

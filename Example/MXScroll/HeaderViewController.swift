@@ -10,37 +10,54 @@ import MXScroll
 import UIKit
 import WebKit
 class HeaderViewController: UIViewController, WKNavigationDelegate {
-    @IBOutlet weak var viewheight: NSLayoutConstraint!
+    @IBOutlet var viewheight: NSLayoutConstraint!
     @IBOutlet var webView: WKWebView!
     @IBOutlet var scrollview: UIScrollView!
-    @IBOutlet weak var exampleView: UIView!
+    @IBOutlet var exampleView: UIView!
+    @IBOutlet weak var uiwebview: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         if webView != nil {
             loadWeb()
         }
+        if uiwebview != nil {
+            loaduiwebview()
+        }
     }
+
     @IBAction func changeHeight(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        viewheight.constant = sender.isSelected ? 1000:10
+        viewheight.constant = sender.isSelected ? 1000 : 10
     }
-    
+
+    @IBAction func ScrollToBottom(_ sender: Any) {
+        
+    }
     func loadWeb() {
-        let url = URL(string: "https://mp.weixin.qq.com/s?src=11&timestamp=1531997396&ver=1008&signature=yLWN4rHkjRXq8BuFxY5UuCWY3AREbDAGKNA1oc-nc4DiUWzFBdQA0RSdiqR73U-b-r2Qdjw4ousPipnZqtigHuoA36cjgNOfwHc1XhDtixaQgXtRVukjbdPHJZpSdYtd&new=1")!
+        let url = URL(string: "https://mp.weixin.qq.com/s/8Ja85jEN67V4iJ6MKiEsQA")!
         webView.load(URLRequest(url: url))
         webView.scrollView.isScrollEnabled = false
+    }
+    
+    func loaduiwebview() {
+        let url = URL(string: "https://mp.weixin.qq.com/s/8Ja85jEN67V4iJ6MKiEsQA")!
+        uiwebview.loadRequest(URLRequest(url: url))
+        uiwebview.scrollView.isScrollEnabled = false
     }
 }
 
 extension HeaderViewController: MXViewControllerViewSource {
-    func headerViewForContentOb() -> UIView? {
+ 
+    func headerViewForMixObserveContentOffsetChange() -> UIView? {
         if webView != nil {
             return webView
-        }else if scrollview != nil { 
+        } else if scrollview != nil {
             return scrollview
+        } else if uiwebview != nil {
+            return  uiwebview
         }
         return nil
-    }
+    } 
 }
 
 extension HeaderViewController {
