@@ -87,11 +87,11 @@ public class MSSegmentControl: UIControl {
     public var titleFormatter: MSTitleFormatterBlock?
     
     /// Text attributes to apply to labels of the unselected segments
-    public var titleTextAttributes: [NSAttributedString.Key: Any]?
+    public var titleTextAttributes: [NSAttributedStringKey: Any]?
     
     /// Text attributes to apply to selected item title text.
     /// Attributes not set in this dictionary are inherited from `titleTextAttributes`.
-    public var selectedTitleTextAttributes: [NSAttributedString.Key: Any]?
+    public var selectedTitleTextAttributes: [NSAttributedStringKey: Any]?
     
     public var fixLast: Bool = false
     
@@ -1059,9 +1059,9 @@ public class MSSegmentControl: UIControl {
     
     // MARK: - Styliing Support
     
-    private func finalTitleAttributes() -> [NSAttributedString.Key: Any] {
-        var defaults: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                                                       NSAttributedString.Key.foregroundColor: UIColor.black]
+    private func finalTitleAttributes() -> [NSAttributedStringKey: Any] {
+        var defaults: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),
+                                                       NSAttributedStringKey.foregroundColor: UIColor.black]
         if self.titleTextAttributes != nil {
             defaults.merge(dict: self.titleTextAttributes!)
         }
@@ -1069,8 +1069,8 @@ public class MSSegmentControl: UIControl {
         return defaults
     }
     
-    private func finalSelectedTitleAttributes() -> [NSAttributedString.Key: Any] {
-        var defaults: [NSAttributedString.Key: Any] = self.finalTitleAttributes()
+    private func finalSelectedTitleAttributes() -> [NSAttributedStringKey: Any] {
+        var defaults: [NSAttributedStringKey: Any] = self.finalTitleAttributes()
         if self.selectedTitleTextAttributes != nil {
             defaults.merge(dict: self.selectedTitleTextAttributes!)
         }
