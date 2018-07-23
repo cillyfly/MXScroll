@@ -27,7 +27,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Installation
 
 ### Swift compatibility
-To work with Swift 4.0 use MXScroll v.1.0.0.
+To work with Swift 4.0 use MXScroll v.0.1.0.
 
 ### Cocoapods
 MXScroll is available through [CocoaPods](https://cocoapods.org). To install
