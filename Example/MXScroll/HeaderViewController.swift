@@ -14,14 +14,16 @@ class HeaderViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet var webView: WKWebView!
     @IBOutlet var scrollview: UIScrollView!
     @IBOutlet var exampleView: UIView!
-    @IBOutlet weak var uiwebview: UIWebView!
+    @IBOutlet var uiwebview: UIWebView!
+    @IBOutlet var containerWeb: ContainerWeb!
     override func viewDidLoad() {
         super.viewDidLoad()
         if webView != nil {
             loadWeb()
-        }
-        if uiwebview != nil {
+        } else if uiwebview != nil {
             loaduiwebview()
+        } else if containerWeb != nil {
+            containerWeb.loadModel()
         }
     }
 
@@ -31,14 +33,14 @@ class HeaderViewController: UIViewController, WKNavigationDelegate {
     }
 
     @IBAction func ScrollToBottom(_ sender: Any) {
-        
     }
+
     func loadWeb() {
         let url = URL(string: "https://mp.weixin.qq.com/s/8Ja85jEN67V4iJ6MKiEsQA")!
         webView.load(URLRequest(url: url))
         webView.scrollView.isScrollEnabled = false
     }
-    
+
     func loaduiwebview() {
         let url = URL(string: "https://mp.weixin.qq.com/s/8Ja85jEN67V4iJ6MKiEsQA")!
         uiwebview.loadRequest(URLRequest(url: url))
@@ -47,17 +49,18 @@ class HeaderViewController: UIViewController, WKNavigationDelegate {
 }
 
 extension HeaderViewController: MXViewControllerViewSource {
- 
     func headerViewForMixObserveContentOffsetChange() -> UIView? {
         if webView != nil {
             return webView
         } else if scrollview != nil {
             return scrollview
         } else if uiwebview != nil {
-            return  uiwebview
+            return uiwebview
+        } else if containerWeb != nil {
+            return containerWeb.webView
         }
         return nil
-    } 
+    }
 }
 
 extension HeaderViewController {

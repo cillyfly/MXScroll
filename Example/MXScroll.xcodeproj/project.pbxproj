@@ -11,6 +11,12 @@
 		1EBE3B5120FF37BC005381B5 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE3B4E20FF37BC005381B5 /* SecondViewController.swift */; };
 		1EBE3B5220FF37BC005381B5 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE3B4F20FF37BC005381B5 /* ChildViewController.swift */; };
 		1EBE3B5320FF37BC005381B5 /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE3B5020FF37BC005381B5 /* HeaderViewController.swift */; };
+		1EC72C3521081533005B6017 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC72C3421081533005B6017 /* ToolBar.swift */; };
+		1EC72C372108153C005B6017 /* ToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC72C362108153C005B6017 /* ToolBar.xib */; };
+		1ECE06C721080F02002E7984 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECE06C621080F02002E7984 /* TopView.swift */; };
+		1ECE06C921080F0B002E7984 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ECE06C821080F0B002E7984 /* TopView.xib */; };
+		1EE5E5CE2107009D0085BFC0 /* ContainerWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE5E5CD2107009D0085BFC0 /* ContainerWeb.swift */; };
+		1EE5E5D0210700AA0085BFC0 /* ContainerWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EE5E5CF210700AA0085BFC0 /* ContainerWeb.xib */; };
 		27495ACF4B9D2955945666E8 /* Pods_MXScroll_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA59BA81469DF467F2179D5 /* Pods_MXScroll_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -37,6 +43,12 @@
 		1EBE3B4E20FF37BC005381B5 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1EBE3B4F20FF37BC005381B5 /* ChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		1EBE3B5020FF37BC005381B5 /* HeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
+		1EC72C3421081533005B6017 /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
+		1EC72C362108153C005B6017 /* ToolBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolBar.xib; sourceTree = "<group>"; };
+		1ECE06C621080F02002E7984 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		1ECE06C821080F0B002E7984 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
+		1EE5E5CD2107009D0085BFC0 /* ContainerWeb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWeb.swift; sourceTree = "<group>"; };
+		1EE5E5CF210700AA0085BFC0 /* ContainerWeb.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContainerWeb.xib; sourceTree = "<group>"; };
 		29B8A14681D8D7A99C051704 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		2DF2CB49EA43B5F510D80757 /* Pods_MXScroll_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MXScroll_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA59BA81469DF467F2179D5 /* Pods_MXScroll_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MXScroll_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,9 +131,15 @@
 				1EBE3B4E20FF37BC005381B5 /* SecondViewController.swift */,
 				1E238C2B21018E7A0080DE0E /* MXExampleViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				1EE5E5CD2107009D0085BFC0 /* ContainerWeb.swift */,
+				1EE5E5CF210700AA0085BFC0 /* ContainerWeb.xib */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				1ECE06C621080F02002E7984 /* TopView.swift */,
+				1ECE06C821080F0B002E7984 /* TopView.xib */,
+				1EC72C3421081533005B6017 /* ToolBar.swift */,
+				1EC72C362108153C005B6017 /* ToolBar.xib */,
 			);
 			name = "Example for MXScroll";
 			path = MXScroll;
@@ -259,7 +277,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				1EC72C372108153C005B6017 /* ToolBar.xib in Resources */,
+				1ECE06C921080F0B002E7984 /* TopView.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				1EE5E5D0210700AA0085BFC0 /* ContainerWeb.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +324,7 @@
 				"${BUILT_PRODUCTS_DIR}/MXScroll/MXScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/XXNibBridge/XXNibBridge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -310,6 +332,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XXNibBridge.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -341,11 +364,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EC72C3521081533005B6017 /* ToolBar.swift in Sources */,
 				1EBE3B5120FF37BC005381B5 /* SecondViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				1EBE3B5320FF37BC005381B5 /* HeaderViewController.swift in Sources */,
+				1EE5E5CE2107009D0085BFC0 /* ContainerWeb.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				1E238C2C21018E7A0080DE0E /* MXExampleViewController.swift in Sources */,
+				1ECE06C721080F02002E7984 /* TopView.swift in Sources */,
 				1EBE3B5220FF37BC005381B5 /* ChildViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

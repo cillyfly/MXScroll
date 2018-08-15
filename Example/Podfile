@@ -1,8 +1,11 @@
+
+source 'https://github.com/CocoaPods/Specs.git'  # 官方库
+source 'https://git.coding.net/cillyfly/CCPod.git'   # 私有库
 use_frameworks!
 
 target 'MXScroll_Example' do
   pod 'MXScroll', :path => '../'
-
+ pod 'XXNibBridge', '~> 2.3.2'
   target 'MXScroll_Tests' do
     inherit! :search_paths
 

@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         
          let headerUIWebView = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController4")
         
+        let headerContainer = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController5")
+        
         var hh:UIViewController!
         if tag == 0{
             hh = header
@@ -48,6 +50,8 @@ class ViewController: UIViewController {
             hh = headerNormal
         }else if tag == 3{
             hh = headerUIWebView
+        }else if tag == 4{
+            hh = headerContainer
         }
         
         let child1 = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChildViewController")
@@ -61,7 +65,7 @@ class ViewController: UIViewController {
         mx.headerViewOffsetHeight = 10
         mx.view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         mx.title = "MIX"
-        mx.shouldScrollToBottomAtFirstTime = true
+        mx.shouldScrollToBottomAtFirstTime = false
         navigationController?.pushViewController(mx, animated: true)
    
     }
