@@ -7,9 +7,10 @@
 //
 
 import Foundation
+
 @objc public protocol MXSegmentProtocol {
-//self change to tell other
     typealias didIndexChange = (Int)->Void
+//self change to tell other
     var change:didIndexChange{get set}
 // other change to tell self
     func setSelected(index: Int, animator: Bool)

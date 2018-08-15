@@ -123,8 +123,8 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
             
         } else if let uweb = view as? UIWebView {
             let realHeightOB = uweb.rx.realContentHeight.share()
-            realHeightOB.bind(to: uweb.rx.MatchHeightEqualToContent).disposed(by: dispose)
-            realHeightOB.observeOn(MainScheduler.asyncInstance)
+            realHeightOB .bind(to: uweb.rx.MatchHeightEqualToContent).disposed(by: dispose)
+            realHeightOB .observeOn(MainScheduler.asyncInstance)
                 .subscribe { eve in
                     if !eve.isStopEvent {
                         self.updateHeaderHeight()

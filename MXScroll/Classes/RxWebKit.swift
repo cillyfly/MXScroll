@@ -70,7 +70,7 @@ extension Reactive where Base: WKWebView {
     // export to public the real content height. insert js function when webview is did finish load
     public var realContentHeight: Observable<CGFloat> {
         return self.base.scrollView.rx.observeWeakly(CGSize.self, "contentSize")
-            .map { $0?.height ?? 0 }.distinctUntilChanged()
+            .map { $0?.height == 0 ? 500 : ($0?.height)! }.distinctUntilChanged()
     }
 
     // use js function to get the final height
