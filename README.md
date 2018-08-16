@@ -1,7 +1,6 @@
 ![banner](images/banner.png)
 
 # MXScroll
-[![CI Status](https://img.shields.io/travis/cillyfly/MXScroll.svg?style=flat)](https://travis-ci.org/cillyfly/MXScroll)
 [![Version](https://img.shields.io/cocoapods/v/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
 [![License](https://img.shields.io/cocoapods/l/MXScroll.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/cocoapods/p/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
