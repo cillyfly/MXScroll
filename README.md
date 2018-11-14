@@ -1,7 +1,6 @@
 ![banner](images/banner.png)
 
 # MXScroll
-[![CI Status](https://img.shields.io/travis/cillyfly/MXScroll.svg?style=flat)](https://travis-ci.org/cillyfly/MXScroll)
 [![Version](https://img.shields.io/cocoapods/v/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
 [![License](https://img.shields.io/cocoapods/l/MXScroll.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/cocoapods/p/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
@@ -29,7 +28,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ### Swift compatibility
 
 To work with Swift 4.0 use MXScroll v.0.1.0.
-To work with Swift 4.1 use MXScroll v.0.1.1.
+
+To work with Swift 4.1 use MXScroll v.0.1.2.
 
 ### Cocoapods
 MXScroll is available through [CocoaPods](https://cocoapods.org). To install
