@@ -57,7 +57,7 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         showsHorizontalScrollIndicator = mxShowsHorizontalScrollIndicator
         showsVerticalScrollIndicator = mxShowsVerticalScrollIndicator
-        decelerationRate = UIScrollViewDecelerationRateFast
+        decelerationRate = UIScrollView.DecelerationRate.fast
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -284,6 +284,9 @@ extension MXScrollView {
 
 extension MXScrollView {
     private func getContentHeight() -> CGFloat {
+        guard (superview != nil) else {
+            return 0
+        }
         var contentHeight = (superview?.bounds.height)! + headerViewHeight
         contentHeight -= (topSpacing + bottomSpacing)
         return contentHeight

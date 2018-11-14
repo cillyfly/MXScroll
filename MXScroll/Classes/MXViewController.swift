@@ -29,8 +29,13 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
     /// settting segment from outside
     open var segmentView: T!
     
-    var segmentedScrollView = MXScrollView<T>(frame: CGRect.zero)
+     var segmentedScrollView = MXScrollView<T>(frame: CGRect.zero) 
     
+    open var scrollView :UIScrollView{
+        get{
+            return segmentedScrollView
+        }
+    }
     /**
      *  Set ViewController for header view.
      */
@@ -159,6 +164,7 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         setupSegmentScrollView()
         loadControllers()
@@ -166,6 +172,7 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+            print("viewDidLayoutSubviews")
         let topSpacing = MXUtil.getTopSpacing(self)
         segmentedScrollView.topSpacing = topSpacing
         segmentedScrollView.bottomSpacing = MXUtil.getBottomSpacing(self)
@@ -195,7 +202,7 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
      - parameter headerViewController: Header ViewController.
      */
     func addHeaderViewController(_ headerViewController: UIViewController) {
-        addChildViewController(headerViewController)
+        addChild(headerViewController)
         segmentedScrollView.addHeaderView(view: headerViewController.view)
         if let delegate = headerViewController as? MXViewControllerViewSource, let v = delegate.headerViewForMixObserveContentOffsetChange?() {
             segmentedScrollView.setListenHeaderView(view: v)
@@ -206,7 +213,7 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
             segmentedScrollView.updateHeaderHeight()
         }
         
-        headerViewController.didMove(toParentViewController: self)
+        headerViewController.didMove(toParent: self)
     }
     
     /**
@@ -216,9 +223,9 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
      */
     func addContentControllers(_ contentControllers: [UIViewController]) {
         for controller in contentControllers {
-            addChildViewController(controller)
+            addChild(controller)
             segmentedScrollView.addContentView(controller.view, frame: view.bounds)
-            controller.didMove(toParentViewController: self)
+            controller.didMove(toParent: self)
             if let delegate = controller as? MXViewControllerViewSource {
                 let v = delegate.viewForMixToObserveContentOffsetChange!()
                 segmentedScrollView.contentViews.append(v)

@@ -87,11 +87,11 @@ public class MSSegmentControl: UIControl {
     public var titleFormatter: MSTitleFormatterBlock?
     
     /// Text attributes to apply to labels of the unselected segments
-    public var titleTextAttributes: [NSAttributedStringKey: Any]?
+    public var titleTextAttributes: [NSAttributedString.Key: Any]?
     
     /// Text attributes to apply to selected item title text.
     /// Attributes not set in this dictionary are inherited from `titleTextAttributes`.
-    public var selectedTitleTextAttributes: [NSAttributedStringKey: Any]?
+    public var selectedTitleTextAttributes: [NSAttributedString.Key: Any]?
     
     public var fixLast: Bool = false
     
@@ -426,10 +426,10 @@ public class MSSegmentControl: UIControl {
             let titleLayer = CATextLayer()
             titleLayer.frame = newRect
 //            titleLayer.alignmentMode = .center
-            titleLayer.alignmentMode = kCAAlignmentCenter
+            titleLayer.alignmentMode = CATextLayerAlignmentMode.center
             if (UIDevice.current.systemVersion as NSString).floatValue < 10.0 {
 //                titleLayer.truncationMode = .end
-                titleLayer.truncationMode = kCATruncationEnd
+                titleLayer.truncationMode = CATextLayerTruncationMode.end
             }
             titleLayer.string = self.attributedTitleAtIndex(index: index)
             titleLayer.contentsScale = UIScreen.main.scale 
@@ -512,10 +512,10 @@ public class MSSegmentControl: UIControl {
             let titleLayer = CATextLayer()
             titleLayer.frame = textRect
 //            titleLayer.alignmentMode = .center
-            titleLayer.alignmentMode = kCAAlignmentCenter
+            titleLayer.alignmentMode = CATextLayerAlignmentMode.center
             if (UIDevice.current.systemVersion as NSString).floatValue < 10.0 {
 //                titleLayer.truncationMode = .end
-                titleLayer.truncationMode = kCATruncationEnd
+                titleLayer.truncationMode = CATextLayerTruncationMode.end
             }
             titleLayer.string = self.attributedTitleAtIndex(index: index)
             titleLayer.contentsScale = UIScreen.main.scale
@@ -1029,7 +1029,7 @@ public class MSSegmentControl: UIControl {
                 CATransaction.setAnimationDuration(0.15)
                 
 //                CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .linear))
-                CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear))
+                CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear))
                 self.setArrowFrame()
                 self.selectionIndicatorBoxLayer.frame = self.frameForFillerSelectionIndicator()
                 self.selectionIndicatorStripLayer.frame = self.frameForSelectionIndicator()
@@ -1059,9 +1059,9 @@ public class MSSegmentControl: UIControl {
     
     // MARK: - Styliing Support
     
-    private func finalTitleAttributes() -> [NSAttributedStringKey: Any] {
-        var defaults: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),
-                                                       NSAttributedStringKey.foregroundColor: UIColor.black]
+    private func finalTitleAttributes() -> [NSAttributedString.Key: Any] {
+        var defaults: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+                                                       NSAttributedString.Key.foregroundColor: UIColor.black]
         if self.titleTextAttributes != nil {
             defaults.merge(dict: self.titleTextAttributes!)
         }
@@ -1069,8 +1069,8 @@ public class MSSegmentControl: UIControl {
         return defaults
     }
     
-    private func finalSelectedTitleAttributes() -> [NSAttributedStringKey: Any] {
-        var defaults: [NSAttributedStringKey: Any] = self.finalTitleAttributes()
+    private func finalSelectedTitleAttributes() -> [NSAttributedString.Key: Any] {
+        var defaults: [NSAttributedString.Key: Any] = self.finalTitleAttributes()
         if self.selectedTitleTextAttributes != nil {
             defaults.merge(dict: self.selectedTitleTextAttributes!)
         }
