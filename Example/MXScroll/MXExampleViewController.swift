@@ -43,10 +43,10 @@ class MXExampleViewController: UIViewController {
  
         
         
-        addChildViewController(mx)
+        addChild(mx)
         containerView.addSubview(mx.view)
         mx.view.frame = containerView.bounds
-        mx.didMove(toParentViewController: self)
+        mx.didMove(toParent: self)
         
      
     }
@@ -64,8 +64,8 @@ class MXExampleViewController: UIViewController {
         segmentView.selectionIndicatorColor = #colorLiteral(red: 0.9759539962, green: 0.3313286304, blue: 0.008939011954, alpha: 1)
         segmentView.selectionIndicatorHeight = 2
         
-        segmentView.selectedTitleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.9759539962, green: 0.3313286304, blue: 0.008939011954, alpha: 1), NSAttributedStringKey.font: Segment_statu_titleSelected]
-        segmentView.titleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), NSAttributedStringKey.font: Segment_statu_titleNormal]
+        segmentView.selectedTitleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9759539962, green: 0.3313286304, blue: 0.008939011954, alpha: 1), NSAttributedString.Key.font: Segment_statu_titleSelected]
+        segmentView.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), NSAttributedString.Key.font: Segment_statu_titleNormal]
         
         segmentView.segmentWidthStyle = .fixed
         
