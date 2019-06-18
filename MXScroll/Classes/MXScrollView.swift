@@ -136,7 +136,7 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
     } else if let scroll = view as? UIScrollView {
       scroll.rx.realContentHeight.bind(to: scroll.rx.MatchHeightEqualToContent).disposed(by: dispose)
       scroll.rx.realContentHeight.skipWhile { $0 == 0.0 }
-        .delay(0.01, scheduler: MainScheduler.asyncInstance) 
+        .delay(DispatchTimeInterval.microseconds(1), scheduler: MainScheduler.asyncInstance) 
         .subscribe { [unowned self] eve in
           if !eve.isStopEvent {
             self.updateHeaderHeight()
