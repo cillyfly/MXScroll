@@ -202,7 +202,7 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
      - parameter headerViewController: Header ViewController.
      */
     func addHeaderViewController(_ headerViewController: UIViewController) {
-        addChild(headerViewController)
+      addChild(headerViewController)
         segmentedScrollView.addHeaderView(view: headerViewController.view)
         if let delegate = headerViewController as? MXViewControllerViewSource, let v = delegate.headerViewForMixObserveContentOffsetChange?() {
             segmentedScrollView.setListenHeaderView(view: v)
@@ -213,7 +213,7 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
             segmentedScrollView.updateHeaderHeight()
         }
         
-        headerViewController.didMove(toParent: self)
+      headerViewController.didMove(toParent: self)
     }
     
     /**

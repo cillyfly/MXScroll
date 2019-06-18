@@ -1,0 +1,41 @@
+PODS:
+  - EasyPeasy (1.9.0)
+  - MXScroll (0.1.2):
+    - EasyPeasy
+    - RxCocoa
+    - RxSwift
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - XXNibBridge (2.3.1)
+
+DEPENDENCIES:
+  - MXScroll (from `../`)
+  - XXNibBridge
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EasyPeasy
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - XXNibBridge
+
+EXTERNAL SOURCES:
+  MXScroll:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EasyPeasy: 19a84ef8f8bbcf925b9fecc29d1d78b7dab96718
+  MXScroll: dd4de36fe0a0a3cebc4ff70ad31762e4c0890ca6
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  XXNibBridge: addb780e6db076eb2c61716aa60b176a6799b80f
+
+PODFILE CHECKSUM: f804193a7f1c7ce3fab9bb30199846b0556324fe
+
+COCOAPODS: 1.7.2
