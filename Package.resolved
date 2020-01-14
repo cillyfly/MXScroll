@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "EasyPeasy",
+        "repositoryURL": "https://github.com/nakiostudio/EasyPeasy",
+        "state": {
+          "branch": null,
+          "revision": "5855b14d7c8a7f510be8275794ec9afeba07b4cf",
+          "version": "1.9.2"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift",
+        "state": {
+          "branch": null,
+          "revision": "b3e888b4972d9bc76495dd74d30a8c7fad4b9395",
+          "version": "5.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
