@@ -16,6 +16,11 @@ class SecondViewController: ChildViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("SecondViewController viewWillAppear")
+    }
 }
 
 extension SecondViewController{

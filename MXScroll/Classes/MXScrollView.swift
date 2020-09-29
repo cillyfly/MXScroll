@@ -112,7 +112,8 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
       let realHeightOB = web.rx.realContentHeight.share()
       realHeightOB.bind(to: web.rx.MatchHeightEqualToContent).disposed(by: dispose)
       realHeightOB
-        .subscribe { eve in
+        .subscribe { [weak self] eve in
+          guard let self = self else { return }
           if !eve.isStopEvent {
             self.updateHeaderHeight()
             if self.shouldScrollToBottomAtFirstTime {
@@ -125,7 +126,8 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
       let realHeightOB = uweb.rx.realContentHeight.share()
       realHeightOB.bind(to: uweb.rx.MatchHeightEqualToContent).disposed(by: dispose)
       realHeightOB.observeOn(MainScheduler.asyncInstance)
-        .subscribe { eve in
+        .subscribe { [weak self] eve in
+          guard let self = self else { return }
           if !eve.isStopEvent {
             self.updateHeaderHeight()
             if self.shouldScrollToBottomAtFirstTime {
@@ -136,7 +138,7 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
     } else if let scroll = view as? UIScrollView {
       scroll.rx.realContentHeight.bind(to: scroll.rx.MatchHeightEqualToContent).disposed(by: dispose)
       scroll.rx.realContentHeight.skipWhile { $0 == 0.0 }
-        .delay(DispatchTimeInterval.microseconds(1), scheduler: MainScheduler.asyncInstance) 
+        .delay(DispatchTimeInterval.microseconds(1), scheduler: MainScheduler.asyncInstance)
         .subscribe { [unowned self] eve in
           if !eve.isStopEvent {
             self.updateHeaderHeight()
