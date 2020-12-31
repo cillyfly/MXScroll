@@ -1,6 +1,6 @@
 # Table of contents
 
-* [MXScroll-Readme](README.md)
+* [README](README.md)
 
 ## MXScroll
 
