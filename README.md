@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-=======
+ 
 ![banner](images/banner.png)
->>>>>>> parent of 37b8a30... GitBook: [master] 3 pages and 10 assets modified
-
+ 
 # MXScroll
 [![Version](https://img.shields.io/cocoapods/v/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
 [![License](https://img.shields.io/cocoapods/l/MXScroll.svg?style=flat)](https://opensource.org/licenses/MIT)
@@ -17,8 +15,8 @@ MXScroll is a framework that lets you create mix scroll view easier. you can jus
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-| WKWebView | UIScrollView | UIView |
-| --- | --- | --- |
+| WKWebView                          | UIScrollView                             | UIView                       |
+| ---------------------------------- | ---------------------------------------- | ---------------------------- |
 | ![wkwebview](images/wkwebview.gif) | ![UIScrollView](images/UIScrollView.gif) | ![UIView](images/UIView.gif) |
 
 ## Requirements
