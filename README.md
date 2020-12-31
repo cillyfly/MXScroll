@@ -1,4 +1,11 @@
-# README
+---
+description: >-
+  MXScroll is a framework that lets you create mix scroll view easier. you can
+  just provide the datasource and do not need to consider the page composition.
+  the datasource can be provided by storyboard
+---
+
+# MXScroll-Readme
 
 ![banner](.gitbook/assets/banner.png)
 
