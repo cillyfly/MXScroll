@@ -6,7 +6,7 @@
 //  Copyright © 2018 cillyfly. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import EasyPeasy
 #if !RX_NO_MODULE
 import RxCocoa
