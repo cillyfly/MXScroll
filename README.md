@@ -1,31 +1,34 @@
-![banner](images/banner.png)
+# README
 
-# MXScroll
-[![Version](https://img.shields.io/cocoapods/v/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
-[![License](https://img.shields.io/cocoapods/l/MXScroll.svg?style=flat)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/cocoapods/p/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
+![banner](.gitbook/assets/banner.png)
 
-MXScroll is a framework that lets you create mix scroll view easier. you can just provide the datasource and do not need to consider the page composition. the datasource can be provided by storyboard or programmatically. 
+## MXScroll
 
-### Structure  
-![structure](images/ViewFoundation.png)
+[![Version](https://img.shields.io/cocoapods/v/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll) [![License](https://img.shields.io/cocoapods/l/MXScroll.svg?style=flat)](https://opensource.org/licenses/MIT) [![Platform](https://img.shields.io/cocoapods/p/MXScroll.svg?style=flat)](https://cocoapods.org/pods/MXScroll)
 
-## Example
+MXScroll is a framework that lets you create mix scroll view easier. you can just provide the datasource and do not need to consider the page composition. the datasource can be provided by storyboard or programmatically.
+
+#### Structure
+
+![structure](.gitbook/assets/ViewFoundation.png)
+
+### Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 | WKWebView | UIScrollView | UIView |
-| --- | --- | --- |
-| ![wkwebview](images/wkwebview.gif) | ![UIScrollView](images/UIScrollView.gif) | ![UIView](images/UIView.gif) |
+| :--- | :--- | :--- |
+| ![wkwebview](.gitbook/assets/wkwebview.gif) | ![UIScrollView](.gitbook/assets/UIScrollView.gif) | ![UIView](.gitbook/assets/UIView.gif) |
 
-## Requirements
+### Requirements
+
 * Xcode 9+
 * Swift 4.0+
 * iOS 10.0+ 
 
-## Installation
+### Installation
 
-### Swift compatibility
+#### Swift compatibility
 
 To work with Swift 4.0 use MXScroll v.0.1.0.
 
@@ -33,28 +36,33 @@ To work with Swift 4.1 use MXScroll v.0.1.2.
 
 To work with Swift 5.0 use MXScroll v.0.1.3
 
-### Cocoapods
-MXScroll is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+#### Cocoapods
+
+MXScroll is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'MXScroll'
 ```
-## Usage
-### Simple
 
-##### 1. First you should 
-    import MXScroll
+### Usage
 
-##### 2. Prepare Header
+#### Simple
 
-```Swift
+**1. First you should**
+
+```text
+import MXScroll
+```
+
+**2. Prepare Header**
+
+```swift
 let header = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController")
-``` 
+```
 
 if `WKWebView` , `UIWebView` or `UIScrollView` is in HeaderVC, you should implement `MXViewControllerViewSource`.
 
-```Swift
+```swift
 extension HeaderViewController:MXViewControllerViewSource{
       func headerViewForContentOb() -> UIView? {
           return webView
@@ -62,14 +70,15 @@ extension HeaderViewController:MXViewControllerViewSource{
 }
 ```
 
-##### 3. Prepare Content
+**3. Prepare Content**
 
-```Swift
+```swift
 let child1 = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChildViewController")
 ```
+
 if `UITableView` or `UIScrollView` is in ContentVC, you should implement `MXViewControllerViewSource`
 
-```Swift
+```swift
 extension ChildViewController:MXViewControllerViewSource{
        func viewForMixToObserveContentOffsetChange() -> UIView {
            return self.tableView
@@ -77,30 +86,34 @@ extension ChildViewController:MXViewControllerViewSource{
 }
 ```
 
-##### 4. Prepare Segment
+**4. Prepare Segment**
+
 You can use the `MSSegmentControl` provide by `MXScroll`
 
-```Swift
+```swift
   let segment = MSSegmentControl(sectionTitles: ["1", "2"])
 ```
-##### 5. Mix 
 
-```Swift
+**5. Mix**
+
+```swift
 let header = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HeaderViewController")
-        
+
 let child1 = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChildViewController")
-        
+
 let child2 = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController")
-        
+
 let segment = MSSegmentControl(sectionTitles: ["1", "2"])
-        
+
 let mx = MXViewController<MSSegmentControl>.init(headerViewController: header, segmentControllers: [child1, child2], segmentView: segment)
 navigationController?.pushViewController(mx, animated: true)
 ```
-### Segment
-If you want to use the custom Segment,Just implement`MXSegmentProtocol` 
 
-```Swift
+#### Segment
+
+If you want to use the custom Segment,Just implement`MXSegmentProtocol`
+
+```swift
 extension MSSegmentControl: MXSegmentProtocol {
     // segment change to tell vc
     public var change: ((Int) -> Void) {
@@ -111,7 +124,7 @@ extension MSSegmentControl: MXSegmentProtocol {
             self._didIndexChange = newValue
         }
     }
-    
+
     // vc change callback method
     public func setSelected(index: Int, animator: Bool) {
         self.setSelected(forIndex: index, animated: animator, shouldNotify: true)
@@ -119,11 +132,11 @@ extension MSSegmentControl: MXSegmentProtocol {
 }
 ```
 
-
-## Author
+### Author
 
 cillyfly, cillyfly@163.com
 
-## License
+### License
 
 MXScroll is available under the MIT license. See the LICENSE file for more info.
+
